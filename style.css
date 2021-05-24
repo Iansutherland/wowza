@@ -1,5 +1,9 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
+body {
+  overflow-x: hidden;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -78,4 +82,33 @@ canvas {
 
   .left {
     grid-column: 6 / 12;
+  }
+
+  #controls {
+    top: 0;
+    right: 50px;
+    position: fixed;
+    max-width: 200px;
+    max-height: 200px;
+    color: white;
+    background-color: darkgray;
+    display: block;
+    font-size: smaller;
+  }
+
+  #controls > table {
+    padding: 2px;
+  }
+
+  #toggleDevStats {
+    background-color: darkslateblue;
+    border-color: dodgerblue;
+    border-width: 2px;
+  }
+
+  #scrollToTop {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
   }

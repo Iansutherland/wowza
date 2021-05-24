@@ -2,14 +2,28 @@ import './style.css';
 import ResumeContent from './resume_content.js';
 import spaceJpg from './textures/space.jpg';
 import CreateEarth from './planets/earth.js';
+import CreateMars from './planets/mars.js';
 import CreateMoon from './planets/moon.js';
 import CreateMyFace from './extraGeometries.js';
+import DevStats from './DevStats.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //https://threejs.org/docs/index.html#api/en/geometries/TorusGeometry
 
+//setup resume content
 const resumeContent = ResumeContent();
 document.querySelector('#content').innerHTML = resumeContent;
+
+//scroll to top button
+const scrollToTop = document.querySelector('#scrollToTop');
+scrollToTop.addEventListener('click', () => {
+  console.log('welp')
+  window.scrollTo(0, 0);
+});
+
+//add in dev stats, hidden unless you set the mesh it should show stats on
+//set in ctor or with setter func
+const devStats = DevStats();
 
 const scene = new THREE.Scene();
 //background textures
@@ -46,6 +60,10 @@ scene.add(earth);
 
 const moon = CreateMoon();
 scene.add(moon);
+//devStats.SetMeshReference(moon, 'moon');
+
+const mars = CreateMars();
+scene.add(mars);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
@@ -80,6 +98,12 @@ function animate(){
   moon.Orbit(earth);
 
   earth.animate();
+
+  myFace.animate();
+
+  mars.animate();
+
+  devStats.Paint();
 
   // controls.update();
 

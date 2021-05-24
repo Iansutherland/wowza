@@ -9,6 +9,12 @@ export default function CreateMyFace() {
       new THREE.BoxGeometry(0.5,0.5,0.5),
       new THREE.MeshBasicMaterial({ map: myFaceTexture})
     );
+
+      myFace.animate = () => {
+        myFace.rotation.x += 0.001;
+        myFace.rotation.y += 0.001;
+      };
+
     return myFace;
 }
   

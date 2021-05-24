@@ -1,37 +1,25 @@
 import marsJpg from '../textures/marsmap1k.jpg';
-import marsBumpJpg from '../textures/msrbump1k.jpg';
-import cloudJpg from '../textures/earthcloudmap.jpg';
+import marsBumpJpg from '../textures/marsbump1k.jpg';
 import * as THREE from 'three';
 
-export default function CreateEarth(cloud = true) {
-  const earthTexture = new THREE.TextureLoader().load(marsJpg);
-  const sphere = new THREE.SphereGeometry(1, 32, 32);
-  const meshMaterial = new THREE.MeshStandardMaterial({
-    map: earthTexture,
-    normalMap: marsBumpJpg
-  });
-  const earth = new THREE.Mesh(
-    sphere,
-    meshMaterial
-  );
-
-  //cloud layer
-  if (cloud) {
-    var geometry = new THREE.SphereGeometry(0.51, 32, 32)
-    var material = new THREE.MeshPhongMaterial({
-      map: new THREE.Texture(cloudJpg),
-      side: THREE.DoubleSide,
-      opacity: 0.8,
-      transparent: true,
-      depthWrite: false,
+export default function Createmars() {
+    const marsTexture = new THREE.TextureLoader().load(marsJpg);
+    const marsBumpTexture = new THREE.TextureLoader().load(marsBumpJpg);
+    const sphere = new THREE.SphereGeometry(0.8, 32, 32);
+    const meshMaterial = new THREE.MeshStandardMaterial({
+        map: marsTexture,
+        normalMap: marsBumpTexture
     });
-    var cloudMesh = new THREE.Mesh(geometry, material)
-    earth.add(cloudMesh)
-  }
+    const mars = new THREE.Mesh(
+        sphere,
+        meshMaterial
+    );
 
-  earth.animate = () => {
-    earth.rotation.x += 0.0004;
-    earth.rotation.y += 0.001;
-  };
-  return earth;
+    mars.position.z = 20;
+
+    mars.animate = () => {
+        mars.rotation.x += 0.0004;
+        mars.rotation.y += 0.001;
+    };
+    return mars;
 }

@@ -28,8 +28,8 @@ export default function CreateEarth(cloud = true) {
   }
 
   earth.animate = () => {
-    earth.rotation.x += 0.0004;
-    earth.rotation.y += 0.001;
+    earth.rotation.x += 0.00001;
+    earth.rotation.y += 0.0004;
   };
   return earth;
 }
