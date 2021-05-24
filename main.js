@@ -3,7 +3,7 @@ import ResumeContent from './resume_content.js';
 import spaceJpg from './textures/space.jpg';
 import CreateEarth from './planets/earth.js';
 import CreateMoon from './planets/moon.js';
-
+import CreateMyFace from './extraGeometries.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //https://threejs.org/docs/index.html#api/en/geometries/TorusGeometry
@@ -12,11 +12,16 @@ const resumeContent = ResumeContent();
 document.querySelector('#content').innerHTML = resumeContent;
 
 const scene = new THREE.Scene();
+//background textures
+const spaceTexture = new THREE.TextureLoader().load(spaceJpg);
+scene.background = spaceTexture;
+
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 const renderer = CreateRenderer();
 
-camera.position.setZ(7);
+camera.position.z = 1;
 
+//add torus
 const torus = CreateTorus(0x420069, 40);
 const torus2 = CreateTorus(0x00b300, 30);
 scene.add(torus, torus2);
@@ -24,18 +29,17 @@ scene.add(torus, torus2);
 const {pointLight, ambientLight} = CreateLighting();
 scene.add(pointLight, ambientLight);
 
-
 //makes the site interactive with mouse, even mousewheel
-// const controls = new OrbitControls(camera, renderer.domElement);
-// controls.minDistance = 5;
-// controls.maxDistance = 50;
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.minDistance = 5;
+controls.maxDistance = 50;
 
 //add 200 stars
 Array(200).fill().forEach(addStar);
 
-//background textures
-const spaceTexture = new THREE.TextureLoader().load(spaceJpg);
-scene.background = spaceTexture;
+const myFace = CreateMyFace();
+myFace.position.z = 0
+scene.add(myFace);
 
 const earth = CreateEarth();
 scene.add(earth);
@@ -45,22 +49,17 @@ scene.add(moon);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  // moon.rotation.x += 0.05;
-  // moon.rotation.y += 0.075;
-  // moon.rotation.z += 0.05;
-  const newMoonPosition = getOrbitXY(moon.earthDegree, moon.distanceToEarth);
-  debugger
-  moon.position.x = newMoonPosition.x;
-  moon.position.y = newMoonPosition.y;
 
   // myFace.rotation.y = 0.01;
   // myFace.rotation.z = 0.01;
   // myFace.position.x += 0.09;
   // myFace.position.z += 0.09;
 
-  // camera.position.z = t * -0.01;
-  // camera.position.x = t * -0.0002;
-  // camera.rotation.y = t * -0.0002;
+  camera.position.z = t * -0.01;
+  if(camera.position.z < 1)
+    camera.position.z = 1;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
 }
 //add the scrolling effect
 document.body.onscroll = moveCamera;
@@ -77,13 +76,12 @@ function animate(){
   torus2.rotation.y -= 0.005;
   torus2.rotation.z -= 0.01;
 
-  moon.rotation.x += 0.001;
-  moon.rotation.y += 0.005;
+  moon.animate();
+  moon.Orbit(earth);
 
-  earth.rotation.x += 0.0004;
-  earth.rotation.y += 0.001;
+  earth.animate();
 
-  //controls.update();
+  // controls.update();
 
   renderer.render(scene, camera);
 };
@@ -143,16 +141,4 @@ const lightHelper = new THREE.PointLightHelper(lightSource);
 
 //gridhelper paints a grid
 const gridHelper = new THREE.GridHelper(200, 50);
-}
-
-function deg2rad(degrees){
-  return degrees * (Math.PI / 180);
-}
-
-function getOrbitXY(deg, distance){
-  const radians = deg2rad(deg);
-  return {
-    x: Math.cos(radians) * distance,
-    y: Math.sin(radians) * distance
-  }
 }

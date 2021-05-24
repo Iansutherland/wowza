@@ -4,7 +4,6 @@ export default function ResumeContent() {
     <header>
       <h1>Ian Sutherland</h1>
       <h4>Software Dev</h4>
-      
     </header>
 
     <blockquote>

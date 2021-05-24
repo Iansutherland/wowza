@@ -1,5 +1,6 @@
 import moonNormalJpg from '../textures/moon_normal.jpg';
 import moonJpg from '../textures/moon.jpg';
+import {getOrbitXY} from '../TrigHelpers';
 import * as THREE from 'three';
 
 export default function CreateMoon() {
@@ -23,8 +24,25 @@ export default function CreateMoon() {
     );
 
     moon.earthDegree = 0;
-    moon.distanceFromEarth = -3;
+    moon.distanceFromPlanet = -1.75;
     moon.position.z = 0.04;
-    moon.position.x = moon.distanceFromEarth;
+    moon.position.x = moon.distanceFromPlanet;
+
+    moon.Orbit = (planet) => {
+        moon.earthDegree += 0.5;
+        moon.position.x = planet.x + moon.distanceFromPlanet;
+        moon.position.y = planet.y + moon.distanceFromPlanet;
+        moon.position.z = planet.z + moon.distanceFromPlanet;
+        const newMoonPosition = getOrbitXY(moon.earthDegree, moon.distanceFromPlanet);
+        moon.position.x = newMoonPosition.x;
+        moon.position.y = newMoonPosition.y;
+        moon.position.z = newMoonPosition.y - (newMoonPosition.y / 10);
+    };
+
+    moon.animate = () => {
+        moon.rotation.x += 0.001;
+        moon.rotation.y += 0.005;
+    }
+
     return moon;
 }

@@ -1,12 +1,14 @@
-import earthJpg from '../textures/earthmap1k.jpg';
+import marsJpg from '../textures/marsmap1k.jpg';
+import marsBumpJpg from '../textures/msrbump1k.jpg';
 import cloudJpg from '../textures/earthcloudmap.jpg';
 import * as THREE from 'three';
 
 export default function CreateEarth(cloud = true) {
-  const earthTexture = new THREE.TextureLoader().load(earthJpg);
+  const earthTexture = new THREE.TextureLoader().load(marsJpg);
   const sphere = new THREE.SphereGeometry(1, 32, 32);
   const meshMaterial = new THREE.MeshStandardMaterial({
     map: earthTexture,
+    normalMap: marsBumpJpg
   });
   const earth = new THREE.Mesh(
     sphere,

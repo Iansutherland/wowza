@@ -1,11 +1,12 @@
 import headShotJpg from './textures/headShot.jpg';
 import resumeDescJpg from './textures/resume_desc.jpg';
+import * as THREE from 'three';
 
-export function CreateMyFace() {
+export default function CreateMyFace() {
     //texture mapping
     const myFaceTexture = new THREE.TextureLoader().load(headShotJpg);
     const myFace = new THREE.Mesh(
-      new THREE.BoxGeometry(3,3,3),
+      new THREE.BoxGeometry(0.5,0.5,0.5),
       new THREE.MeshBasicMaterial({ map: myFaceTexture})
     );
     return myFace;
