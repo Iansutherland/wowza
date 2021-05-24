@@ -34,7 +34,7 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
-h1, h2, h3, blockquote {
+h1, h2, h3, h4, h5, h6 blockquote {
   font-family: elevon, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -111,4 +111,96 @@ canvas {
     bottom: 0;
     right: 0;
     z-index: 100;
+  }
+
+  @media (max-width: 576px){
+    main {
+      width: 100vw;
+      color: white;
+      z-index: 99;
+      position: absolute;
+      width: 100%;
+      margin: 0px auto;
+      padding: 120px 0px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    
+    h1, h2, h3, h4, h5, h6 blockquote {
+      font-family: elevon, sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: x-small;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    header {
+      background: var(--dark-bg);
+      grid-column: 1 / span 2;
+      font-size: 1rem;
+      padding: 2rem;
+      margin-bottom: var(--spacing);
+    }
+  
+    section {
+      grid-column: 2 / span 2;
+      padding: 1rem;
+      background: var(--dark-bg);
+      font-size: 1.25rem;
+      line-height: 1.5;
+      margin-bottom: var(--spacing);
+    }
+  
+    blockquote {
+      margin: 0;
+      padding: 0;
+      grid-column: 1/ span 2;
+      margin-bottom: var(--spacing);
+    }
+  
+    blockquote p {
+      color: black;
+      background-color: white;
+      font-size: 1rem;
+      display: inline;
+      line-height: 1;
+    }
+  
+    .left {
+      grid-column: 6 / 12;
+    }
+  
+    #controls {
+      top: 0;
+      right: 50px;
+      position: fixed;
+      max-width: 200px;
+      max-height: 200px;
+      color: white;
+      background-color: darkgray;
+      display: block;
+      font-size: smaller;
+    }
+  
+    #controls > table {
+      padding: 2px;
+    }
+  
+    #toggleDevStats {
+      background-color: darkslateblue;
+      border-color: dodgerblue;
+      border-width: 2px;
+    }
+  
+    #scrollToTop {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      z-index: 100;
+    }
   }

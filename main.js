@@ -26,7 +26,7 @@ scrollToTop.addEventListener('click', () => {
 const devStats = DevStats();
 
 const scene = new THREE.Scene();
-//background textures
+//background space texture
 const spaceTexture = new THREE.TextureLoader().load(spaceJpg);
 scene.background = spaceTexture;
 
@@ -85,6 +85,9 @@ document.body.onscroll = moveCamera;
 //run animation loop and change objects in each frame
 function animate(){
   requestAnimationFrame( animate );
+
+  renderer.setPixelRatio( window.devicePixelRatio );
+  renderer.setSize( window.innerWidth, window.innerHeight );
 
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;

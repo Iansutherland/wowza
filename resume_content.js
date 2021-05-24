@@ -68,9 +68,11 @@ export default function ResumeContent() {
       </ul>
     </section>
 
-    <blockquote>
-      <p>“Never confuse movement with action.” <br> ― Ernest Hemingway </p>
-    </blockquote>
+    <section>
+      <blockquote>
+        <p>“Never confuse movement with action.” <br> ― Ernest Hemingway </p>
+      </blockquote>
+    </section>
 
     <section>
       <h2>Special Thanks</h2>
