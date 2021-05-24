@@ -27,11 +27,11 @@ export default function ResumeContent() {
       </h4>
       <h6>State of Arizona, Department of Water Resources</h6>
       <p>
-        Windows Background Worker. Integrated with Xerox Docushare and Gmail api to create emailable bot that uploaded documents by fetcing barcoded data. 
+        Windows Background Worker. Integrated with Xerox Docushare and Gmail api to create emailable bot that uploaded documents by fetching barcoded data. 
       </p>
       <p>Technology</p>
       <ul>
-        <li>c#</li>
+        <li>C#</li>
         <li>.NET</li>
         <li>Google OAuth2 provider</li>
         <li>Oracle database</li>
@@ -42,12 +42,12 @@ export default function ResumeContent() {
       <section>
       <h4>Internal Workflow and CRUD web app</h4>
       <p>
-        This was a 3-tier app used in determining water supply and designations for that water use.
+        This is a 3-tier app used in determining water supply and designations for that water use.
       </p>
       <p>Technology</p>
       <ul>
         <li>React.js (create-react-app)</li>
-        <li>c# web api2 (middleware)</li>
+        <li>C# web api2 (middleware)</li>
         <li>Oracle Database</li>
       </ul>
       </section>
@@ -80,7 +80,7 @@ export default function ResumeContent() {
 
     <section>
       <h2>More Special Thanks</h2>
-      <p>To <a href="http://planetpixelemporium.com/index.php">JHT's Planetary Pixel Emporium</a></p>
+      <p>To <a href="http://planetpixelemporium.com/index.php">JHT's Planetary Pixel Emporium</a> for the planet sphere jpgs used to texture the planets</p>
     </section>
   </main>
     `;
