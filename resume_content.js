@@ -5,10 +5,11 @@ export default function ResumeContent() {
       <h1>Ian Sutherland</h1>
       <h4>Software Dev</h4>
     </header>
-
-    <blockquote>
-      <p>I enjoy technology and solving problems with infrastructure and code</p>
-    </blockquote>
+    <section>
+      <blockquote>
+        <p>I enjoy technology and solving problems with infrastructure and code</p>
+      </blockquote>
+    </section>
 
     <section>
       <h2>Create neat stuff</h2>
