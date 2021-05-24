@@ -22,7 +22,7 @@ export default function ResumeContent() {
     </section>
 
     <section>
-      <h2>Ian's previous experience</h2>
+      <h2>Previous experience</h2>
       <h4>
         Digital Record Management integrations
       </h4>
@@ -77,6 +77,11 @@ export default function ResumeContent() {
       <h2>Special Thanks</h2>
       <p>to Jeff Delaney at <a href="https://fireship.io/">fireship.io</a></p>
       <p>He put together <a href="https://www.youtube.com/watch?v=Q7AOvWpIVHU">this</a> great tutorial on three.js which uses WebGL in the browser.</p>
+    </section>
+
+    <section>
+      <h2>More Special Thanks</h2>
+      <p>To <a href="http://planetpixelemporium.com/index.php">JHT's Planetary Pixel Emporium</a></p>
     </section>
   </main>
     `;
